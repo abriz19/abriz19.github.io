@@ -16,29 +16,27 @@ Full Stack Software Engineer with **4+ years of experience** shipping complete p
 
 ---
 
-## Core Competencies
-
-Full Stack Development | RESTful API Design | GraphQL API Development | Microservices Architecture | Event-Driven Architecture | Apache Kafka | Distributed Systems | Database Design | SQL Query Optimization | Responsive Web Design | Component-Based Architecture | Server-Side Rendering (SSR) | Single Page Applications (SPA) | UI Development | Cross-Browser Compatibility | Third-Party API Integration | Webhook Handling | Authentication & Authorization | Role-Based Access Control (RBAC) | Containerization | CI/CD Pipelines | Cloud Architecture | Production Monitoring | Performance Optimization | AI-Assisted Development | System Design | Agile / Scrum
-
----
-
 ## Technical Skills
 
-**Languages:** JavaScript, TypeScript, Python, Go, SQL, HTML5, CSS3, Bash
+**Programming Languages:** JavaScript, TypeScript, Python, Go, SQL, HTML5, CSS3, Bash
 
-**Frontend:** React, Next.js, Angular, Tailwind CSS, Responsive Web Design, Component-Based Architecture, Server-Side Rendering (SSR), REST & GraphQL Client Integration, Semantic HTML, Cross-Browser Compatibility
+**Frontend:** React, Next.js, Angular, Tailwind CSS, Responsive Web Design, Component-Based Architecture, Component Stories (Storybook), Single Page Applications (SPA), Server-Side Rendering (SSR), REST & GraphQL Client Integration, Semantic HTML, Cross-Browser Compatibility, UI Development
 
-**Backend:** Node.js, NestJS, Express.js, Django, Flask, REST APIs, GraphQL, Microservices, Event-Driven Architecture, Apache Kafka, Prisma ORM, Webhooks
+**Backend:** Node.js, NestJS, Express.js, Django, Flask, RESTful API Design, GraphQL API Development, Microservices Architecture, Distributed Systems, Event-Driven Architecture, Apache Kafka, Asynchronous Programming, Prisma ORM, Webhook Handling, Third-Party API Integration, Fault Tolerance
 
-**Databases & Data:** PostgreSQL, MySQL, MongoDB, DynamoDB, Meilisearch, Query Optimization, Indexing, Schema Migrations, Data Modeling
+**Databases & Data:** PostgreSQL, Redis, MySQL, MongoDB, DynamoDB, Meilisearch, Database Design, SQL Query Optimization, Indexing, Schema Migrations, Data Modeling
 
-**Cloud & DevOps:** Google Cloud Platform (GCP), Amazon Web Services (AWS), Microsoft Azure, Docker, Kubernetes, CI/CD Pipelines, Deployment Automation
+**Cloud Platforms:** Google Cloud Platform (Cloud Run, Cloud Build), Amazon Web Services (AWS), Microsoft Azure (AKS), Cloud Architecture, Scalability
 
-**Security & Authentication:** Firebase Authentication, OAuth 2.0, JSON Web Tokens (JWT), Token-Based Access Control, Role-Based Access Control (RBAC)
+**DevOps & Infrastructure:** Docker, Kubernetes, Containerization, Terraform, GitHub Actions, Azure DevOps, CI/CD Pipelines, Deployment Automation, Prometheus, Grafana, Production Monitoring & Observability, Incident Response, Performance Optimization
+
+**Testing & Quality:** Jest, Vitest, Supertest, Storybook, Cypress, Playwright, Unit Testing, Integration Testing, API Testing, End-to-End (E2E) Testing, Test-Driven Development (TDD), Automated Testing, Code Review, Debugging, Production Troubleshooting
+
+**Security & Authentication:** Firebase Authentication, OAuth 2.0, JSON Web Tokens (JWT), Token-Based Access Control, Role-Based Access Control (RBAC), Authentication & Authorization
 
 **AI-Assisted Development:** Claude Code, Cursor, GitHub Copilot, Codex, Prompt Engineering, AI Pair Programming, AI-Assisted Code Review, AI Productivity Applications, Amazon PartyRock
 
-**Testing & Practices:** Unit Testing, Integration Testing, Test-Driven Development (TDD), Code Review, Production Monitoring, Incident Response, Git, GitHub, Postman, Jira, Agile / Scrum, Data Structures & Algorithms
+**Tools & Practices:** Git, GitHub, Postman, Jira, Agile / Scrum, Software Development Lifecycle (SDLC), System Design, Data Structures & Algorithms
 
 ---
 
@@ -122,7 +120,7 @@ Jan 2025 – Jan 2026 | Addis Ababa, Ethiopia
 ### Adigrat University
 
 **Bachelor of Science, Electrical and Computer Engineering**
-Graduated Jul 2022 | Adigrat, Ethiopia
+Nov 2016 – Jul 2022 | Adigrat, Ethiopia
 
 ---
 
@@ -135,3 +133,4 @@ Graduated Jul 2022 | Adigrat, Ethiopia
 - **AWS Scholars Program Project Badge: Build Your First AI Productivity App** — Udacity, Mar 2026
 - **Professional Foundations** — ALX Africa
 - **AI Career Essentials** — ALX Africa
+- **IELTS Academic — Overall Band 6.5 (CEFR B2)** — British Council, Oct 2025
