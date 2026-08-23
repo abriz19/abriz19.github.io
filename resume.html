@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abreham Dessu — Full Stack Software Engineer — CV</title>
+<meta name="description" content="CV of Abreham Dessu, Full Stack Software Engineer — NestJS, PostgreSQL, Kafka, React, Next.js.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Ctext x='32' y='44' font-family='Inter,Helvetica,Arial,sans-serif' font-size='32' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EAD%3C/text%3E%3C/svg%3E">
+<style>
+  /* ---------- Print-optimised CV sheet ----------
+     Source of truth: resume.md
+     Regenerate the PDF with:
+     google-chrome --headless --disable-gpu --no-pdf-header-footer \
+       --print-to-pdf=Abreham_Dessu_CV.pdf resume.html
+  ------------------------------------------------ */
+
+  @page {
+    size: A4;
+    margin: 10mm 12mm;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #14171a;
+    --ink-soft:   #3d4348;
+    --ink-mute:   #5f676d;
+    --rule:       #c8ccd0;
+    --accent:     #0f766e;
+  }
+
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 8.5pt;
+    line-height: 1.24;
+    color: var(--ink);
+    background: #fff;
+    max-width: 200mm;
+    margin: 0 auto;
+    padding: 12mm 10mm;
+  }
+
+  /* ---------- Header ---------- */
+  .name {
+    font-size: 19pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .title {
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 1mm;
+  }
+
+  .contact {
+    margin-top: 2mm;
+    font-size: 9pt;
+    color: var(--ink-soft);
+  }
+
+  .contact a { color: var(--ink-soft); text-decoration: none; }
+  .contact span + span::before { content: "  ·  "; color: var(--rule); }
+
+  /* ---------- Sections ---------- */
+  h2 {
+    break-after: avoid;
+    page-break-after: avoid;
+    font-size: 9.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--ink);
+    border-bottom: 1.1pt solid var(--ink);
+    padding-bottom: 1mm;
+    margin: 2.4mm 0 1.5mm;
+  }
+
+  p.summary { color: var(--ink-soft); text-align: justify; }
+
+  .competencies {
+    font-size: 7.9pt;
+    color: var(--ink-soft);
+    line-height: 1.35;
+  }
+
+  /* ---------- Skills ---------- */
+  .skills dt {
+    float: left;
+    clear: left;
+    width: 32mm;
+    font-weight: 600;
+    font-size: 8.2pt;
+  }
+
+  .skills dd {
+    margin-left: 32mm;
+    margin-bottom: 0.8mm;
+    color: var(--ink-soft);
+    font-size: 8.2pt;
+  }
+
+  .skills::after { content: ""; display: table; clear: both; }
+
+  /* ---------- Experience ---------- */
+  .role { margin-bottom: 2.2mm; }
+
+  .role__head {
+    break-after: avoid;
+    page-break-after: avoid;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 6mm;
+  }
+
+  .role__title { font-size: 10.5pt; font-weight: 700; }
+  .role__dates { font-size: 8.8pt; color: var(--ink-mute); white-space: nowrap; }
+
+  .role__org {
+    break-after: avoid;
+    page-break-after: avoid;
+    font-size: 9.4pt;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 1.1mm;
+  }
+
+  ul { list-style: none; }
+
+  .role li, .project li {
+    position: relative;
+    padding-left: 3.6mm;
+    margin-bottom: 0.7mm;
+    color: var(--ink-soft);
+  }
+
+  .role li::before, .project li::before {
+    content: "▪";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 7pt;
+    top: 0.35mm;
+  }
+
+  strong { font-weight: 600; color: var(--ink); }
+
+  /* ---------- Projects ---------- */
+  .project { margin-bottom: 2mm; page-break-inside: avoid; }
+  .project__name { font-size: 9.8pt; font-weight: 700; }
+  .project__stack {
+    font-size: 8.6pt;
+    font-style: italic;
+    color: var(--ink-mute);
+    margin-bottom: 1.2mm;
+  }
+
+  /* ---------- Education & certs ---------- */
+  .edu { margin-bottom: 2.2mm; page-break-inside: avoid; }
+  .edu__school { font-size: 9.8pt; font-weight: 700; }
+  .edu__degree { font-size: 9.2pt; font-weight: 600; color: var(--accent); }
+  .edu__meta { font-size: 8.8pt; color: var(--ink-mute); }
+  .edu__note { color: var(--ink-soft); margin-top: 0.8mm; }
+
+  .certs li {
+    position: relative;
+    padding-left: 3.6mm;
+    margin-bottom: 0.25mm;
+    color: var(--ink-soft);
+  }
+
+  .certs li::before {
+    content: "▪";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 7pt;
+  }
+
+  /* ---------- Screen-only affordance ---------- */
+  .screen-only {
+    max-width: 200mm;
+    margin: 6mm auto -4mm;
+    padding: 3mm 10mm;
+    font-size: 9pt;
+    color: var(--ink-mute);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4mm;
+    flex-wrap: wrap;
+  }
+
+  .screen-only a {
+    color: #fff;
+    background: var(--accent);
+    text-decoration: none;
+    padding: 2mm 5mm;
+    border-radius: 3mm;
+    font-weight: 600;
+  }
+
+  @media print {
+    .screen-only { display: none; }
+    body { padding: 0; max-width: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="screen-only">
+  <span>Press Ctrl/Cmd + P and choose “Save as PDF” for a print-ready copy.</span>
+  <a href="Abreham_Dessu_CV.pdf" download>Download PDF</a>
+</div>
+
+<header>
+  <h1 class="name">Abreham Dessu</h1>
+  <p class="title">Full Stack Software Engineer</p>
+  <p class="contact">
+    <span>Addis Ababa, Ethiopia</span>
+    <span>+251 931 521 167</span>
+    <span><a href="mailto:abreham.dessu@gmail.com">abreham.dessu@gmail.com</a></span>
+    <span><a href="https://linkedin.com/in/abrehamdessu">linkedin.com/in/abrehamdessu</a></span>
+    <span><a href="https://github.com/abriz19">github.com/abriz19</a></span>
+  </p>
+</header>
+
+<h2>Professional Summary</h2>
+<p class="summary">
+  Full Stack Software Engineer with <strong>4+ years of experience</strong> shipping complete products — from
+  PostgreSQL schema and event-driven microservices through to the React and Next.js interfaces users touch.
+  Scaled a Kafka-based microservices platform to <strong>10,000+ users</strong>, engineered payment infrastructure
+  processing <strong>5,000+ daily transactions at a 96% success rate</strong>, and improved system reliability
+  <strong>30%</strong> while reducing downtime <strong>40%</strong>. Fluent across Node.js, NestJS, TypeScript,
+  React, Next.js, and Angular, with production deployment experience on Google Cloud Platform (GCP) and Amazon
+  Web Services (AWS). <strong>AWS Certified Solutions Architect – Associate.</strong> Works fluently with
+  AI-assisted development tooling (Claude Code, Cursor, GitHub Copilot, Codex) to accelerate delivery without
+  sacrificing code quality or review discipline.
+</p>
+
+<h2>Core Competencies</h2>
+<p class="competencies">
+  Full Stack Development | RESTful API Design | GraphQL API Development | Microservices Architecture |
+  Event-Driven Architecture | Apache Kafka | Distributed Systems | Database Design | SQL Query Optimization |
+  Responsive Web Design | Component-Based Architecture | Server-Side Rendering (SSR) | Single Page Applications
+  (SPA) | UI Development | Cross-Browser Compatibility | Third-Party API Integration | Webhook Handling |
+  Authentication &amp; Authorization | Role-Based Access Control (RBAC) | Containerization | CI/CD Pipelines |
+  Cloud Architecture | Production Monitoring | Performance Optimization | AI-Assisted Development | System
+  Design | Agile / Scrum
+</p>
+
+<h2>Technical Skills</h2>
+<dl class="skills">
+  <dt>Languages</dt>
+  <dd>JavaScript, TypeScript, Python, Go, SQL, HTML5, CSS3, Bash</dd>
+
+  <dt>Frontend</dt>
+  <dd>React, Next.js, Angular, Tailwind CSS, Responsive Web Design, Component-Based Architecture, Server-Side
+      Rendering (SSR), REST &amp; GraphQL Client Integration, Semantic HTML, Cross-Browser Compatibility</dd>
+
+  <dt>Backend</dt>
+  <dd>Node.js, NestJS, Express.js, Django, Flask, REST APIs, GraphQL, Microservices, Event-Driven Architecture,
+      Apache Kafka, Prisma ORM, Webhooks</dd>
+
+  <dt>Databases &amp; Data</dt>
+  <dd>PostgreSQL, MySQL, MongoDB, DynamoDB, Meilisearch, Query Optimization, Indexing, Schema Migrations,
+      Data Modeling</dd>
+
+  <dt>Cloud &amp; DevOps</dt>
+  <dd>Google Cloud Platform (GCP), Amazon Web Services (AWS), Microsoft Azure, Docker, Kubernetes,
+      CI/CD Pipelines, Deployment Automation</dd>
+
+  <dt>Security &amp; Auth</dt>
+  <dd>Firebase Authentication, OAuth 2.0, JSON Web Tokens (JWT), Token-Based Access Control, Role-Based Access
+      Control (RBAC)</dd>
+
+  <dt>AI-Assisted Dev</dt>
+  <dd>Claude Code, Cursor, GitHub Copilot, Codex, Prompt Engineering, AI Pair Programming, AI-Assisted Code
+      Review, AI Productivity Applications, Amazon PartyRock</dd>
+
+  <dt>Testing &amp; Practices</dt>
+  <dd>Unit Testing, Integration Testing, Test-Driven Development (TDD), Code Review, Production Monitoring,
+      Incident Response, Git, GitHub, Postman, Jira, Agile / Scrum, Data Structures &amp; Algorithms</dd>
+</dl>
+
+<h2>Professional Experience</h2>
+
+<div class="role">
+  <div class="role__head">
+    <span class="role__title">Full Stack Engineer</span>
+    <span class="role__dates">Jun 2025 – Present</span>
+  </div>
+  <p class="role__org">ETM Software · Addis Ababa, Ethiopia</p>
+  <ul>
+    <li>Improved system reliability <strong>30%</strong> by re-architecting the backend service layer and implementing production monitoring, alerting, and automated CI/CD deployment pipelines on Google Cloud Platform (GCP).</li>
+    <li>Engineered a fault-tolerant integration keeping <strong>5,000+ HubSpot company and contact records</strong> synchronized with near-zero data drift, using retry logic, deduplication, and reconciliation to survive partial API failures and rate limiting.</li>
+    <li>Eliminated manual data entry across <strong>2,000+ hierarchical entities</strong> by automating multi-level synchronization workflows, removing a recurring source of data corruption in business-critical records.</li>
+    <li>Reduced feature delivery time <strong>25%</strong> by designing <strong>5+ reusable service modules</strong> in NestJS and Prisma ORM, establishing shared data-access and validation patterns across the codebase.</li>
+    <li>Secured business-critical operations with <strong>zero authentication-related incidents to date</strong>, implementing Firebase Authentication with JSON Web Token (JWT) access control and role-based permissions (RBAC).</li>
+    <li>Designed and deployed GraphQL and RESTful APIs on NestJS and PostgreSQL, collapsing multi-call data fetching into single round trips and enabling client-side workflow automation for internal teams.</li>
+  </ul>
+</div>
+
+<div class="role">
+  <div class="role__head">
+    <span class="role__title">Full Stack Developer</span>
+    <span class="role__dates">Sep 2023 – Jun 2025</span>
+  </div>
+  <p class="role__org">Ablaze Labs · Addis Ababa, Ethiopia</p>
+  <ul>
+    <li>Scaled payment infrastructure to <strong>5,000+ daily transactions at a 96% success rate</strong> by integrating Chapa and SantimPay gateways with idempotent request handling, webhook signature verification, and automated failure recovery.</li>
+    <li>Reduced production downtime <strong>40%</strong> and improved performance <strong>20%</strong> through query profiling, PostgreSQL index tuning, and disciplined production incident triage and root-cause analysis.</li>
+    <li>Scaled an event-driven microservices gaming platform to <strong>10,000+ users</strong>, building both the NestJS/Kafka backend services and the React interfaces for user management, game management, referrals, and payments.</li>
+    <li>Led end-to-end delivery of a national content management system for Ethiopia's <strong>Ministry of Water and Energy</strong>, architecting backend APIs and building the frontend content management modules across <strong>12 interconnected subprojects</strong>.</li>
+    <li>Replaced manual, document-driven government reporting with automated APIs and CMS interfaces, reducing report turnaround from <strong>3 days to under 2 hours</strong> across multiple ministry projects.</li>
+    <li>Increased user acquisition <strong>35%</strong> on a job board platform by shipping full stack employer and applicant workflows, subscription billing, and a referral-based growth engine.</li>
+    <li>Delivered Problem-Based Learning functionality for a medical e-learning platform, building the collaborative case-session interface and supporting services used by <strong>500+ students and instructors</strong>.</li>
+  </ul>
+</div>
+
+<div class="role">
+  <div class="role__head">
+    <span class="role__title">Junior Software Developer</span>
+    <span class="role__dates">Oct 2022 – Aug 2023</span>
+  </div>
+  <p class="role__org">Hirundo Security Solution · Addis Ababa, Ethiopia</p>
+  <ul>
+    <li>Improved deployment efficiency <strong>22%</strong> by automating server configuration and provisioning across <strong>10+ machines</strong> with repeatable, scripted Bash workflows.</li>
+    <li>Increased IT support efficiency <strong>15%</strong> by developing internal backend systems and administrative web applications that automated the team's highest-volume manual processes.</li>
+    <li>Consolidated fragmented operational workflows into a unified web-based toolset, measurably reducing manual workload for business teams.</li>
+    <li>Strengthened stability of business-critical systems through unit and integration testing, debugging, and resolution of production defects before user impact.</li>
+  </ul>
+</div>
+
+<h2>Projects</h2>
+
+<div class="project">
+  <p class="project__name">Microservices Gaming Platform</p>
+  <p class="project__stack">NestJS, Apache Kafka, PostgreSQL, React, Firebase Authentication, Docker</p>
+  <ul>
+    <li>Event-driven backend serving <strong>10,000+ users</strong> across independently scalable services for user management, game management, referrals, and payments, paired with a React frontend for player onboarding, game browsing, and wallet management.</li>
+  </ul>
+</div>
+
+<div class="project">
+  <p class="project__name">Water &amp; Energy CMS — Ethiopian Ministry of Water and Energy</p>
+  <p class="project__stack">NestJS, PostgreSQL, React, Docker</p>
+  <ul>
+    <li>Nationwide platform spanning <strong>12 interconnected subprojects</strong>; designed the shared backend API layer and built the content management interfaces that standardized reporting for government stakeholders.</li>
+  </ul>
+</div>
+
+<div class="project">
+  <p class="project__name">HubSpot Enterprise Integration Service</p>
+  <p class="project__stack">NestJS, Prisma ORM, PostgreSQL, GCP</p>
+  <ul>
+    <li>Bidirectional synchronization keeping <strong>5,000+ CRM records</strong> and <strong>2,000+ hierarchical entities</strong> consistent between HubSpot and internal PostgreSQL systems under real-world API rate limits and partial failures.</li>
+  </ul>
+</div>
+
+<div class="project">
+  <p class="project__name">Job Board &amp; Talent Marketplace</p>
+  <p class="project__stack">Next.js, NestJS, PostgreSQL, Meilisearch, Tailwind CSS</p>
+  <ul>
+    <li>End-to-end employer and applicant experiences — job posting, application tracking, subscription billing, and referral-driven acquisition — with responsive server-rendered Next.js interfaces and sub-second Meilisearch faceted search.</li>
+  </ul>
+</div>
+
+<h2>Education</h2>
+
+<div class="edu">
+  <p class="edu__school">A2SV (African to Silicon Valley)</p>
+  <p class="edu__degree">Software Engineering Trainee — Data Structures and Algorithms</p>
+  <p class="edu__meta">Jan 2025 – Jan 2026 · Addis Ababa, Ethiopia</p>
+  <p class="edu__note">Selected for a highly competitive program preparing African engineers for global technology roles, focused on advanced algorithms, data structures, and system design.</p>
+</div>
+
+<div class="edu">
+  <p class="edu__school">Adigrat University</p>
+  <p class="edu__degree">Bachelor of Science, Electrical and Computer Engineering</p>
+  <p class="edu__meta">Graduated Jul 2022 · Adigrat, Ethiopia</p>
+</div>
+
+<h2>Certifications</h2>
+<ul class="certs">
+  <li><strong>AWS Certified Solutions Architect – Associate</strong> — Amazon Web Services</li>
+  <li><strong>AWS Certified Cloud Practitioner</strong> — Amazon Web Services</li>
+  <li><strong>Microsoft Certified: Azure Fundamentals (AZ-900)</strong> — Microsoft</li>
+  <li><strong>AWS Scholars Program Project Badge: Analyze Data using AI with PartyRock</strong> — Udacity, Mar 2026</li>
+  <li><strong>AWS Scholars Program Project Badge: Build Your First AI Productivity App</strong> — Udacity, Mar 2026</li>
+  <li><strong>Professional Foundations</strong> — ALX Africa</li>
+  <li><strong>AI Career Essentials</strong> — ALX Africa</li>
+</ul>
+
+</body>
+</html>
