@@ -36,6 +36,10 @@
   --color-accent-hover:  #115e59;
   --color-accent-soft:   #e6f2f0;
 
+  /* Hero highlight + background glow */
+  --hero-gradient: linear-gradient(100deg, #0f766e 0%, #0e7490 100%);
+  --hero-glow:     rgba(15, 118, 110, 0.13);
+
   /* Typography */
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                "Helvetica Neue", Arial, sans-serif;
@@ -48,7 +52,7 @@
   --text-xl:   1.375rem;
   --text-2xl:  1.75rem;
   --text-3xl:  2.25rem;
-  --text-hero: clamp(2.75rem, 8vw, 4.5rem);
+  --text-hero: clamp(2.25rem, 6vw, 3.75rem);
 
   /* Spacing scale */
   --space-1: 0.25rem;
@@ -94,6 +98,9 @@
     --color-accent:        #5eead4;
     --color-accent-hover:  #99f6e4;
     --color-accent-soft:   #14312d;
+
+    --hero-gradient: linear-gradient(100deg, #5eead4 0%, #67e8f9 100%);
+    --hero-glow:     rgba(94, 234, 212, 0.10);
 
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
@@ -169,6 +176,17 @@ strong {
 
 .skip-link:focus {
   left: var(--space-4);
+}
+
+/* Read by screen readers, hidden on screen */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 
@@ -299,40 +317,109 @@ strong {
 /* ---------- 5. HERO ---------- */
 
 .hero {
-  padding-block: clamp(var(--space-8), 14vh, var(--space-9)) var(--space-9);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(var(--space-8), 12vh, var(--space-9)) var(--space-9);
+}
+
+/* Dotted grid that fades out toward the edges */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: radial-gradient(var(--color-border-strong) 1px, transparent 1.5px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 15%, transparent 75%);
+          mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 15%, transparent 75%);
+  pointer-events: none;
+}
+
+/* Soft accent glow behind the headline */
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -15%;
+  left: 50%;
+  width: min(1000px, 140vw);
+  aspect-ratio: 1.5;
+  transform: translateX(-35%);
+  background: radial-gradient(closest-side, var(--hero-glow), transparent);
+  pointer-events: none;
 }
 
 .hero__inner {
-  max-width: 780px;
+  max-width: 920px;
   margin-inline: auto;
 }
 
-.hero__eyebrow {
+/* "Open to opportunities" pill with a live dot */
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-4) var(--space-1) var(--space-3);
   font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--color-accent);
-  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+  background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-6);
+}
+
+.hero__pulse {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+}
+
+.hero__pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: inherit;
+  animation: hero-pulse 2s var(--ease) infinite;
+}
+
+.hero__intro {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
   margin-bottom: var(--space-4);
 }
 
-.hero__name {
+.hero__intro strong { color: var(--color-text); }
+
+.hero__headline {
   font-size: var(--text-hero);
   font-weight: 700;
+  line-height: 1.08;
   letter-spacing: -0.035em;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-6);
 }
 
-.hero__title {
-  font-size: var(--text-xl);
-  font-weight: 500;
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-5);
+.hero__line { display: block; }
+
+.hero__em {
+  font-style: normal;
+  color: var(--color-accent); /* fallback if background-clip isn't supported */
+  background-image: var(--hero-gradient);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero__hook {
   font-size: var(--text-lg);
   color: var(--color-text-muted);
-  max-width: 62ch;
+  max-width: 60ch;
   margin-bottom: var(--space-6);
 }
 
@@ -400,32 +487,76 @@ strong {
   transform: translateY(-2px);
 }
 
+.btn--arrow .icon { transition: transform var(--transition); }
+.btn--arrow:hover .icon { transform: translateX(3px); }
+
 /* Hero stats */
 .hero__stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-5);
-  padding-top: var(--space-6);
-  border-top: 1px solid var(--color-border);
+  gap: var(--space-4);
 }
 
 .stat {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
+  padding: var(--space-4);
+  background-color: color-mix(in srgb, var(--color-surface) 75%, transparent);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
 }
 
 .stat__value {
-  font-size: var(--text-2xl);
+  font-size: var(--text-3xl);
   font-weight: 700;
+  line-height: 1.1;
   letter-spacing: -0.03em;
   color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.stat__arrow {
+  margin-inline: 0.12em;
+  font-weight: 500;
+  color: var(--color-text-subtle);
 }
 
 .stat__label {
   font-size: var(--text-xs);
-  color: var(--color-text-subtle);
+  color: var(--color-text-muted);
   line-height: 1.4;
+}
+
+/* Hero entrance: each piece rises in, one after another */
+.hero__status,
+.hero__intro,
+.hero__line,
+.hero__hook,
+.hero__actions,
+.hero__filemeta,
+.hero__stats {
+  animation: hero-rise 700ms var(--ease) both;
+}
+
+.hero__intro              { animation-delay: 80ms; }
+.hero__line:nth-child(1)  { animation-delay: 180ms; }
+.hero__line:nth-child(2)  { animation-delay: 280ms; }
+.hero__line:nth-child(3)  { animation-delay: 380ms; }
+.hero__hook               { animation-delay: 500ms; }
+.hero__actions            { animation-delay: 580ms; }
+.hero__filemeta           { animation-delay: 640ms; }
+.hero__stats              { animation-delay: 700ms; }
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hero-pulse {
+  from { transform: scale(1);   opacity: 0.6; }
+  to   { transform: scale(2.8); opacity: 0; }
 }
 
 
@@ -940,6 +1071,13 @@ strong {
 
   .hero__hook { font-size: var(--text-base); }
 
+  .hero__status {
+    font-size: var(--text-xs);
+    margin-bottom: var(--space-5);
+  }
+
+  .hero__intro { font-size: var(--text-base); }
+
   .btn {
     flex: 1 1 auto;
     text-align: center;
@@ -965,6 +1103,9 @@ strong {
 /* Very small screens */
 @media (max-width: 380px) {
   .hero__stats { grid-template-columns: 1fr; }
+
+  /* The pill can wrap to two lines here, so round it like a card */
+  .hero__status { border-radius: var(--radius-md); }
 }
 
 
@@ -979,5 +1120,17 @@ strong {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /* Show the hero immediately instead of waiting out the entrance delays */
+  .hero__status,
+  .hero__intro,
+  .hero__line,
+  .hero__hook,
+  .hero__actions,
+  .hero__filemeta,
+  .hero__stats,
+  .hero__pulse::after {
+    animation: none !important;
   }
 }

@@ -61,15 +61,20 @@
     <!-- ============ HERO ============ -->
     <section class="hero" id="hero">
       <div class="container hero__inner">
-        <p class="hero__eyebrow">Addis Ababa, Ethiopia &nbsp;·&nbsp; Open to opportunities</p>
-        <h1 class="hero__name">Abreham Dessu</h1>
-        <p class="hero__title">Full Stack Software Engineer</p>
+        <p class="hero__status">
+          <span class="hero__pulse" aria-hidden="true"></span>
+          Open to opportunities &nbsp;·&nbsp; Addis&nbsp;Ababa,&nbsp;Ethiopia
+        </p>
+        <p class="hero__intro">Hi, I'm <strong>Abreham Dessu</strong> — full stack software engineer.</p>
+        <h1 class="hero__headline">
+          <span class="hero__line">Payments that <em class="hero__em">clear.</em></span>
+          <span class="hero__line">Data that <em class="hero__em">doesn't drift.</em></span>
+          <span class="hero__line">Interfaces people <em class="hero__em">actually use.</em></span>
+        </h1>
         <p class="hero__hook">
-          I ship complete products — from PostgreSQL schema and event-driven microservices
-          through to the React and Next.js interfaces users actually touch. Platforms serving
-          <strong>10,000+ users</strong>, payment rails clearing
-          <strong>5,000+ daily transactions</strong>, and integrations that keep thousands of
-          records in sync without drifting.
+          I've spent 4+ years shipping TypeScript products end to end — PostgreSQL schemas and
+          Kafka microservices underneath, React and Next.js on top — usually where a failure
+          costs someone money, data, or a deadline.
         </p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="Abreham_Dessu_CV.pdf" download="Abreham_Dessu_CV.pdf">
@@ -78,26 +83,31 @@
             </svg>
             Download CV
           </a>
-          <a class="btn btn--ghost" href="#projects">View my work</a>
+          <a class="btn btn--ghost btn--arrow" href="#projects">
+            View my work
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M5 12h14m0 0-6-6m6 6-6 6"/>
+            </svg>
+          </a>
           <a class="btn btn--ghost" href="mailto:abreham.dessu@gmail.com">Get in touch</a>
         </div>
-        <p class="hero__filemeta">PDF · 2 pages · updated August 2026 — or <a href="resume.html">view it in the browser</a></p>
+        <p class="hero__filemeta">PDF · 2 pages · updated October 2026 — or <a href="resume.html">view it in the browser</a></p>
         <ul class="hero__stats">
           <li class="stat">
-            <span class="stat__value">4+</span>
-            <span class="stat__label">Years building software</span>
+            <span class="stat__value" data-count="10" data-suffix="k+">10k+</span>
+            <span class="stat__label">Users on an event-driven platform I scaled</span>
           </li>
           <li class="stat">
-            <span class="stat__value">10k+</span>
-            <span class="stat__label">Users served in production</span>
+            <span class="stat__value" data-count="96" data-suffix="%">96%</span>
+            <span class="stat__label">Success rate across 5,000+ daily payments</span>
           </li>
           <li class="stat">
-            <span class="stat__value">30%</span>
-            <span class="stat__label">Reliability improvement</span>
+            <span class="stat__value" data-count="40" data-prefix="−" data-suffix="%">−40%</span>
+            <span class="stat__label">Production downtime after query and index tuning</span>
           </li>
           <li class="stat">
-            <span class="stat__value">96%</span>
-            <span class="stat__label">Payment success rate</span>
+            <span class="stat__value">3d<span class="stat__arrow" aria-hidden="true">→</span><span class="visually-hidden"> to </span>2h</span>
+            <span class="stat__label">Government report turnaround, down from three days</span>
           </li>
         </ul>
       </div>
@@ -592,6 +602,38 @@
       </p>
     </div>
   </footer>
+
+  <script>
+    // Count the hero stats up from zero. The final values are already in the HTML,
+    // so nothing breaks without JavaScript or for visitors who prefer reduced motion.
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var stats = document.querySelectorAll('.stat__value[data-count]');
+      var duration = 1400;
+      var startDelay = 700; // let the hero finish fading in first
+
+      stats.forEach(function (el) {
+        var target = Number(el.dataset.count);
+        var prefix = el.dataset.prefix || '';
+        var suffix = el.dataset.suffix || '';
+        var final = el.textContent;
+        el.setAttribute('aria-label', final);
+        el.textContent = prefix + '0' + suffix;
+
+        setTimeout(function () {
+          var start = performance.now();
+          function tick(now) {
+            var t = Math.min((now - start) / duration, 1);
+            var eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = prefix + Math.round(target * eased) + suffix;
+            if (t < 1) requestAnimationFrame(tick);
+            else el.textContent = final;
+          }
+          requestAnimationFrame(tick);
+        }, startDelay);
+      });
+    })();
+  </script>
 
 </body>
 </html>
